@@ -2,12 +2,26 @@
 
 void deffend (void)
 {
-    printf("Arquivo defendido!");
+    printf("Arquivo defendido!\n");
 }
 
-int consultaABP(pNodoA *a, char* nome, int* comp)
+int menu (void)
 {
-    while (a!=NULL)
+    int opcao;
+    printf("Menu: (escolha a sua opção)\n");
+    printf("Digite 1 se deseja utilizar ABP.\n");
+    printf("Digite 2 se deseja utilizar AVL.\n")/
+    printf("Digite 3 se deseja sair.\n");
+    scanf("%d", &opcao);
+    if (opcao != 1 && opcao != 2 && opcao != 3)
+        menu();
+    else
+        return opcao;
+}
+
+int consultaABP(pNodoA* a, char* nome, int* comp)
+{
+    while (a != NULL)
     {
         (*comp)++;
         if(strcmp(a->nome, nome) == 0)
@@ -27,7 +41,7 @@ int consultaABP(pNodoA *a, char* nome, int* comp)
     return 0; //não achou, retorna null
 }
 
-pNodoA* InsereArvore(pNodoA *a, int n, char* nome, int* comp_insere)
+pNodoA* InsereABP(pNodoA* a, int n, char* nome, int* comp_insere)
 {
     if (a == NULL)
     {
@@ -42,43 +56,90 @@ pNodoA* InsereArvore(pNodoA *a, int n, char* nome, int* comp_insere)
     {
         (*comp_insere)++;
         if (strcmp(nome, a->nome) < 0)
-            a->esq = InsereArvore(a->esq, n, nome, comp_insere);
+            a->esq = InsereABP(a->esq, n, nome, comp_insere);
         else
-            a->dir = InsereArvore(a->dir, n, nome, comp_insere);
+            a->dir = InsereABP(a->dir, n, nome, comp_insere);
     }
     return a;
 }
 
-void erd(pNodoA *a)
+pNodoA* InsereAVL (pNodoA* a, int n, char* nome, int* ok,  int* comp_insere)
+{
+    /* Insere nodo em uma árvore AVL, onde A representa a raiz da árvore,
+    nome, a chave a ser inserida*/
+    if (a == NULL)
+    {
+        a = (pNodoA*) malloc(sizeof(pNodoA));
+        strcpy(a->nome, nome);
+        a->info = n;
+        a->esq = NULL;
+        a->dir = NULL;
+        a->FB = 0;
+        *ok = 1;
+    }
+    else
+    {
+        (*comp_insere)++;
+        if (strcmp(nome, a->nome) < 0)
+        {
+            a->esq = InsereAVL(a->esq, n, nome, ok, comp_insere);
+            if (*ok)
+            {
+                switch (a->FB)
+                {
+                case -1:
+                    a->FB = 0;
+                    *ok = 0;
+                    break;
+                case 0:
+                    a->FB = 1;
+                    break;
+                case 1:
+                    a=Caso1(a,ok);
+                    break;
+                }
+            }
+        }
+        else
+        {
+            a->dir = InsereAVL(a->dir, n, nome, ok, comp_insere);
+            if (*ok)
+            {
+                switch (a->FB)
+                {
+                case 1:
+                    a->FB = 0;
+                    *ok = 0;
+                    break;
+                case 0:
+                    a->FB = -1;
+                    break;
+                case -1:
+                    a = Caso2(a,ok);
+                    break;
+                }
+            }
+        }
+    }
+    return a;
+}
+
+void imprimir(pNodoA* a)
 {
 
     if (a != NULL)
     {
+        imprimir(a->esq);
         printf("%s    %d\n", a->nome, a->info);
-        erd(a->esq);
-        erd(a->dir);
+        imprimir(a->dir);
     }
 
 }
 
-void imprime(pNodoA *a, int n)
-{
-    int aux=0;
-
-    if (a != NULL)
-    {
-        for(aux=0 ; aux<n ; aux++)
-            printf("=");
-        printf("%s\n", a->nome);
-        imprime(a->esq, n+1);
-        imprime(a->dir, n+1);
-    }
-}
-
-int numero_nodos(pNodoA *a)
+int numero_nodos(pNodoA* a)
 {
 
-    int nos=0;
+    int nos = 0;
 
     if (a != NULL)
     {
@@ -89,9 +150,9 @@ int numero_nodos(pNodoA *a)
     return nos;
 }
 
-pNodoA* rotacao_direita(pNodoA* p)
+pNodoA* rotacao_direita (pNodoA* p)
 {
-    pNodoA *u;
+    pNodoA* u;
     u = p->esq;
     p->esq = u->dir;
     u->dir = p;
@@ -100,9 +161,9 @@ pNodoA* rotacao_direita(pNodoA* p)
     return p;
 }
 
-pNodoA* rotacao_esquerda(pNodoA *p)
+pNodoA* rotacao_esquerda (pNodoA* p)
 {
-    pNodoA *z;
+    pNodoA* z;
     z = p->dir;
     p->dir = z->esq;
     z->esq = p;
@@ -131,7 +192,7 @@ pNodoA* rotacao_dupla_direita (pNodoA* p)
     p = v;
     return p;
 }
-pNodoA* rotacao_dupla_esquerda (pNodoA *p)
+pNodoA* rotacao_dupla_esquerda (pNodoA* p)
 {
     pNodoA *z, *y;
     z = p->dir;
@@ -151,9 +212,9 @@ pNodoA* rotacao_dupla_esquerda (pNodoA *p)
     p = y;
     return p;
 }
-pNodoA* Caso1 (pNodoA *a, int *ok)
+pNodoA* Caso1 (pNodoA* a, int* ok)
 {
-    pNodoA *z;
+    pNodoA* z;
     z = a->esq;
     if (z->FB == 1)
         a = rotacao_direita(a);
@@ -164,9 +225,9 @@ pNodoA* Caso1 (pNodoA *a, int *ok)
     return a;
 }
 
-pNodoA* Caso2 (pNodoA *a, int *ok)
+pNodoA* Caso2 (pNodoA* a, int* ok)
 {
-    pNodoA *z;
+    pNodoA* z;
     z = a->dir;
     if (z->FB == -1)
         a = rotacao_esquerda(a);
@@ -176,66 +237,3 @@ pNodoA* Caso2 (pNodoA *a, int *ok)
     *ok = 0;
     return a;
 }
-
-pNodoA* InsereAVL (pNodoA *a, int n, char *nome, int *ok,  int* comp_insere)
-{
-    /* Insere nodo em uma árvore AVL, onde A representa a raiz da árvore,
-    nome, a chave a ser inserida*/
-    if (a == NULL)
-    {
-        a = (pNodoA*) malloc(sizeof(pNodoA));
-        strcpy(a->nome, nome);
-        a->info = n;
-        a->esq = NULL;
-        a->dir = NULL;
-        a->FB = 0;
-        *ok = 1;
-    }
-    else
-    {
-        (*comp_insere)++;
-        if (strcmp(nome, a->nome) < 0)
-        {
-            a->esq = InsereAVL(a->esq, n, nome,ok, comp_insere);
-            if (*ok)
-            {
-                switch (a->FB)
-                {
-                case -1:
-                    a->FB = 0;
-                    *ok = 0;
-                    break;
-                case 0:
-                    a->FB = 1;
-                    break;
-                case 1:
-                    a=Caso1(a,ok);
-                    break;
-                }
-            }
-        }
-        else
-        {
-            a->dir = InsereAVL(a->dir, n, nome,ok, comp_insere);
-            if (*ok)
-            {
-                switch (a->FB)
-                {
-                case 1:
-                    a->FB = 0;
-                    *ok = 0;
-                    break;
-                case 0:
-                    a->FB = -1;
-                    break;
-                case -1:
-                    a = Caso2(a,ok);
-                    break;
-                }
-            }
-        }
-    }
-    return a;
-}
-
-
