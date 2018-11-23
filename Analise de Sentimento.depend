@@ -1,8 +1,8 @@
 # depslib dependency file v1.0
-1540130353 source:c:\users\bruna\downloads\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\sentimentos.c
+1542987719 source:\\homes\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\main.c
 	"header.h"
 
-1540129689 c:\users\bruna\downloads\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\header.h
+1540116738 \\homes\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\header.h
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
@@ -12,15 +12,15 @@
 	<conio.h>
 	"sentimentos.h"
 
-1540130175 c:\users\bruna\downloads\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\sentimentos.h
+1542381732 \\homes\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\sentimentos.h
 
-1540130336 source:c:\users\bruna\downloads\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\main.c
+1542386226 source:\\homes\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\sentimentos.c
 	"header.h"
 
-1542388113 source:\\homes\bccagliari\desktop\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\main.c
+1542993472 source:c:\users\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\sentimentos.c
 	"header.h"
 
-1540116738 \\homes\bccagliari\desktop\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\header.h
+1542992383 c:\users\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\header.h
 	<stdio.h>
 	<stdlib.h>
 	<math.h>
@@ -30,8 +30,8 @@
 	<conio.h>
 	"sentimentos.h"
 
-1542381730 \\homes\bccagliari\desktop\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\sentimentos.h
+1542992578 c:\users\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\sentimentos.h
 
-1542386225 source:\\homes\bccagliari\desktop\trabalho-final-analise-de-sentimento-master\trabalho-final-analise-de-sentimento-master\sentimentos.c
+1542993979 source:c:\users\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\main.c
 	"header.h"
 

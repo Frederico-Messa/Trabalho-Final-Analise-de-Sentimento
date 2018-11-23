@@ -1,5 +1,10 @@
 #include "header.h"
 
+void deffend (void)
+{
+    printf("Arquivo defendido!");
+}
+
 int consultaABP(pNodoA *a, char* nome, int* comp)
 {
     while (a!=NULL)

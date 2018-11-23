@@ -7,5 +7,5 @@
 #include <conio.h>
 #include "sentimentos.h"
 #define MIN 50
-#define MAX 256
+#define MAX 50
 

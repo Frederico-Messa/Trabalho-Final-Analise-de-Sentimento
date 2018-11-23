@@ -8,6 +8,7 @@ struct TNodoA{
 
 typedef struct TNodoA pNodoA;
 
+void deffend (void);
 int consultaABP(pNodoA *a, char* nome, int* comp);
 pNodoA* InsereArvore(pNodoA *a, int n, char* nome, int* comp_insere);
 void erd(pNodoA *a);
