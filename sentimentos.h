@@ -1,6 +1,6 @@
 struct TNodoA{
     int info;
-    char nome[20];
+    char nome[32];
     struct TNodoA* esq;
     struct TNodoA* dir;
     int FB;

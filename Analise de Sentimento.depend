@@ -35,10 +35,10 @@
 1542993979 source:c:\users\bccagliari\desktop\analise-de-sentimento\analise-de-sentimento\main.c
 	"header.h"
 
-1543017623 source:e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\sentimentos.c
+1543704530 source:e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\sentimentos.c
 	"header.h"
 
-1543018286 e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\header.h
+1543705009 e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\header.h
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>
@@ -46,8 +46,8 @@
 	<ctype.h>
 	"sentimentos.h"
 
-1543017453 e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\sentimentos.h
+1543705006 e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\sentimentos.h
 
-1543018356 source:e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\main.c
+1543018520 source:e:\onedrive\documentos\github\trabalho-final-analise-de-sentimento\main.c
 	"header.h"
 

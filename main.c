@@ -99,6 +99,7 @@ int main (int argc, char* argv[])
 
                         fclose(arq_texto);
                         fclose(arq_saida);
+                        arvore = destroi(arvore);
 
                         printf("\nValor sentimental do texto: %d.", valor_sentimental_texto);
                         printf("\nNúmero de comparações realizadas na inserção: %d.", num_comp_insere);

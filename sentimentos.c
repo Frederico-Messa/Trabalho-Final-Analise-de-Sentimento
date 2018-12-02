@@ -26,7 +26,7 @@ int consultaABP(pNodoA* a, char* nome, int* comp)
         (*comp)++;
         if(strcmp(a->nome, nome) == 0)
         {
-            return a->info; //achou retorna o ponteiro para o nodo
+            return a->info;
         }
         else
         {
@@ -38,7 +38,7 @@ int consultaABP(pNodoA* a, char* nome, int* comp)
         }
     }
 
-    return 0; //não achou, retorna null
+    return 0;
 }
 
 pNodoA* InsereABP(pNodoA* a, int n, char* nome, int* comp_insere)
@@ -65,8 +65,6 @@ pNodoA* InsereABP(pNodoA* a, int n, char* nome, int* comp_insere)
 
 pNodoA* InsereAVL (pNodoA* a, int n, char* nome, int* ok,  int* comp_insere)
 {
-    /* Insere nodo em uma árvore AVL, onde A representa a raiz da árvore,
-    nome, a chave a ser inserida*/
     if (a == NULL)
     {
         a = (pNodoA*) malloc(sizeof(pNodoA));
@@ -236,4 +234,15 @@ pNodoA* Caso2 (pNodoA* a, int* ok)
     a->FB = 0;
     *ok = 0;
     return a;
+}
+
+pNodoA* destroi (pNodoA* a)
+{
+    if (a != NULL)
+    {
+        destroi(a->esq);
+        destroi(a->dir);
+        free(a);
+    }
+    return NULL;
 }
